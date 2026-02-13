@@ -208,15 +208,16 @@ Each department successfully meets its own local KPIs—lanes are built, and hou
 
 This represents not only misaligned incentives, but also a limited optimization scope. We can add a formal constraint as we defined Bounded Processing Capacity in our framework, to call out the problem:
 
-Let $A = \{a_1, a_2, \dots, a_n\}$ be the set of all relevant state variables. Formally, each department optimizes over a strict subset of the relevant state variables; induced-demand dynamics fall outside both objective scopes
-
-By the Bounded Processing Capacity defined in Section 3, we should ensure each agent has an appropriate Attention Budget so that Induced Demand and VKT have bandwidth to process these information signals.
+Let $A = \{a_1, a_2, \dots, a_n\}$ be the set of all relevant state variables. Formally, each department optimizes over a strict subset of the relevant state variables; induced-demand dynamics fall outside both objective scopes.
 
 \begin{itemize}
     \item \textbf{Transportation Dept:} optimizes over $\{\text{LOS, capacity } K\}$
     \item \textbf{Planning Dept:} optimizes over $\{\text{housing units, density}\}$
     \item \textbf{Neither:} optimizes over $\{\text{induced demand } \gamma, \text{long-term VKT}\}$
 \end{itemize}
+
+\paragraph{}
+By the Bounded Processing Capacity defined in Section 3, we should ensure each agent has an appropriate Attention Budget so that Induced Demand and VKT have bandwidth to process these information signals.
 
 \subsection{Interdomain Routing Instability}
 
