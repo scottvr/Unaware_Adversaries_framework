@@ -14,15 +14,7 @@ In many complex systems, constituent agents engage in adversarial behavior witho
 
 ## View Online
 
-Visit the GitHub Pages site: [https://scottvr.github.io/Unaware_Adversaries/](https://scottvr.github.io/Unaware_Adversaries/)
-
-## Repository Contents
-
-- `Unaware_Adversaries0_2_5.pdf` - The complete paper in PDF format
-- `main.tex` - LaTeX source file
-- `thermostat_conflict.png` - Figure illustrating the thermostat conflict case study
-- `gan_architecture.png` - Figure illustrating GAN architecture
-- `index.html` - GitHub Pages landing page
+Read the latest revision: [https://scottvr.github.io/Unaware_Adversaries/](https://scottvr.github.io/Unaware_Adversaries_framework/)
 
 ## Keywords
 
@@ -37,13 +29,9 @@ VanRavenswaay, S. (2026). Unaware Adversaries: A Framework for Characterizing
 Emergent Conflict Between Non-Coordinating Agents.
 ```
 
-## License
-
-This work is licensed under [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
-
 ## Contact
 
-Scott VanRavenswaay - scottvr@gmail.com
+Scott VanRavenswaay - scottvr+github@paperclipmaximizer.ai
 
 ## Acknowledgments
 
