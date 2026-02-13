@@ -60,7 +60,7 @@
 \vspace{2ex}
 
 \begin{abstract}
-In many complex systems, constituent agents engage in adversarial behavior without explicit awareness or intent. These ``unaware adversaries'' operate based on localized objectives and feedback, yet their interactions within a shared environment result in mutual disruption, resource competition, or functional conflict. This paper formally defines this phenomenon and situates it within existing literature on systems theory. We present and analyze several case studiesâ€”including closed-loop, open-loop, and designed conflictsâ€”to build a taxonomy of adversarial typologies. By demonstrating how this framework can be used as a generative tool for analysis and design, we derive illustrative mitigation strategies for problems in fields as diverse as generative modeling and internet routing. The result is a framework intended to help identify, classify, and resolve a pervasive yet under-examined class of system failures, and to generate potential new avenues for research by applying the framework beyond just mitigation.
+In many complex systems, constituent agents engage in adversarial behavior without explicit awareness or intent. These ``unaware adversaries'' operate based on localized objectives and feedback, yet their interactions within a shared environment result in mutual disruption, resource competition, or functional conflict. This paper formally defines this phenomenon and situates it within existing literature on systems theory. We present and analyze several case studies—including closed-loop, open-loop, and designed conflicts—to build a taxonomy of adversarial typologies. By demonstrating how this framework can be used as a generative tool for analysis and design, we derive illustrative mitigation strategies for problems in fields as diverse as generative modeling and internet routing. The result is a framework intended to help identify, classify, and resolve a pervasive yet under-examined class of system failures, and to generate potential new avenues for research by applying the framework beyond just mitigation.
 \end{abstract}
 
 \vspace{1ex}
@@ -68,7 +68,7 @@ In many complex systems, constituent agents engage in adversarial behavior witho
 
 
 \section{Introduction}
-Consider a common real-world scenario: an office room equipped with two independent climate control systems. A radiator, governed by a building-wide thermostat, provides heat, while a window-mounted air conditioning unit, with its own separate controls, provides cooling. Each system operates according to its own local feedback loop. If an occupant turns on the A/C to cool a stuffy room while the building's heating system is simultaneously trying to maintain a minimum winter temperature, the two agents enter a state of persistent, mutually negating workâ€”a thermodynamic conflict that neither is designed to recognize. This scenario serves as an intuitive archetype for a class of interactions we term ``unaware adversaries.''
+Consider a common real-world scenario: an office room equipped with two independent climate control systems. A radiator, governed by a building-wide thermostat, provides heat, while a window-mounted air conditioning unit, with its own separate controls, provides cooling. Each system operates according to its own local feedback loop. If an occupant turns on the A/C to cool a stuffy room while the building's heating system is simultaneously trying to maintain a minimum winter temperature, the two agents enter a state of persistent, mutually negating work—a thermodynamic conflict that neither is designed to recognize. This scenario serves as an intuitive archetype for a class of interactions we term ``unaware adversaries.''
 
 In this paper, we formalize the study of systems wherein agents function as antagonists without semantic awareness of their opposition (possibly because recognizing the relevant signal requires the introduction of some analysis component.) While the term ``adversary'' traditionally implies intentionality, our focus is on interactions where conflict is an emergent property of environmental coupling and feedback dynamics. By analyzing these phenomena, we can better understand and mitigate unintended inefficiencies and instabilities in complex, decentralized systems.
 
@@ -121,7 +121,7 @@ We formally define unaware adversaries as a set of two or more agents or systems
 \section{Case Studies}
 \textit{The following models are intentionally simplified to expose coupling structure rather than to serve as predictive simulations}. The mathematics used are illustrative and are not themselves novel analytical formulations deserving of scrutiny.
 
-In two of the Case Studies, we intentionally extend the analysis beyond diagnosis and mitigation to sketch speculative constructions (e.g., the Gradient-Paced BGP Advertiser and the Pedagogical GAN). These are not presented as finished algorithms or protocol proposals, nor as claims of empirical superiority. Rather, they serve a narrower purpose: to demonstrate that the unaware-adversary framework is not merely descriptive, but generative â€” capable of inspiring non-obvious architectural ideas once a systemâ€™s conflict structure is made explicit.
+In two of the Case Studies, we intentionally extend the analysis beyond diagnosis and mitigation to sketch speculative constructions (e.g., the Gradient-Paced BGP Advertiser and the Pedagogical GAN). These are not presented as finished algorithms or protocol proposals, nor as claims of empirical superiority. Rather, they serve a narrower purpose: to demonstrate that the unaware-adversary framework is not merely descriptive, but generative — capable of inspiring non-obvious architectural ideas once a system’s conflict structure is made explicit.
 
 As with the simplified mathematical models used throughout, these constructions should be read as conceptual exemplars, not as validated designs of network protocol algorithms or GAN architecture. Their value lies in showing what kind of ideas fall out of the framework, not in asserting that these particular instantiations are ready for deployment or adoption.
 
@@ -155,15 +155,15 @@ Both services have access to comprehensive metrics dashboards showing:
 \item System-wide resource utilization
 \item Historical scaling patterns
 \end{itemize} 
-The information is available, but neither service possesses the logic to recognize that their peer's scaling decision invalidates their own. When Service A scales up due to high CPU, it generates more database requests. Service B observes its queue filling and scales up. The additional database capacity briefly reduces queue depth, which reduces back-pressure on Service A. Service A interprets this as successful load handling and scales up further. The cycle repeats, creating cascading over-provisioning.
+The information is available, but neither service possesses the logic to recognize that their peer's scaling decision invalidates their own. When Service A scales up due to high CPU, it generates more database requests. Service B observes its queue filling and scales up. The additional database capacity briefly reduces queue depth, which reduces back-pressure on Service A. Service A interprets this as successful load handling and scales up further (or perhaps a more likely configuration would have it do the opposite - scale down as cost savings measure. This distinction should not be important for our point, which is that it creates unintended oscillations.) The cycle repeats, creating cascading over-provisioning.
 
-This exemplifies pure interpretation failure. The feedback loop is closedâ€”both agents receive real-time signals about each other's behavior. But recognizing that "my peer's scaling activity is negating my scaling decision" requires:
+This exemplifies pure interpretation failure. The feedback loop is closed—both agents receive real-time signals about each other's behavior. But recognizing that "my peer's scaling activity is negating my scaling decision" requires:
 \begin{enumerate}
   \item Causal reasoning across service boundaries
   \item Modeling the indirect coupling between CPU load and database queue depth
   \item Maintaining temporal context to detect oscillatory patterns
 \end{enumerate}
-An individual service's auto-scaling logic is optimized for computational efficiency: a simple threshold-based rule executing in milliseconds. The interpretive burden of higher-order analysisâ€”detecting mutual invalidation across a delayed feedback loopâ€”exceeds its analytical budget.
+An individual service's auto-scaling logic is optimized for computational efficiency: a simple threshold-based rule executing in milliseconds. The interpretive burden of higher-order analysis—detecting mutual invalidation across a delayed feedback loop—exceeds its analytical budget.
 
 The solution, per the Observability Principle, is not merely to surface more metrics, but to pre-compute and inject the higher-order signal: a "scaling coordination score" that explicitly flags when peer scaling activities are causally linked. This transforms a complex inference problem into a first-order observable signal.
 
@@ -204,7 +204,7 @@ $$
 \item \textit{Since $\gamma$ represents the induced demand coefficient, if $\gamma \approx 1$ (as suggested by the "Fundamental Law of Road Congestion") , the equilibrium travel time remains significantly higher than free-flow.}
 \end{itemize}
 
-Each department successfully meets its own local KPIsâ€”lanes are built, and housing is approvedâ€”yet the system as a whole suffers from persistent congestion despite massive capital expenditure. The agents are locked in a state of policy-induced homeostasis, where each one's logical, well-intentioned actions systemically negate the efforts of the other.
+Each department successfully meets its own local KPIs—lanes are built, and housing is approved—yet the system as a whole suffers from persistent congestion despite massive capital expenditure. The agents are locked in a state of policy-induced homeostasis, where each one's logical, well-intentioned actions systemically negate the efforts of the other.
 
 This represents not only misaligned incentives, but also a limited optimization scope. We can add a formal constraint as we defined Bounded Processing Capacity in our framework, to call out the problem:
 
@@ -231,7 +231,7 @@ Consider two neighboring ASes:
     \item \textbf{AS B (Content Provider):} Optimizes for inbound performance by modifying BGP community tags and selectively announcing prefixes.
 \end{itemize}
 
-Both systems reactively adjust (typically via some mechanism outside of BGP itself) \cite{draft-idr-pr-04} their routing announcements based on local utility functionsâ€”CPU load, latency, throughputâ€”but do so without coordination. Their interaction takes place through BGP advertisements and path selection behavior, producing a shared environment susceptible to instability.
+Both systems reactively adjust (typically via some mechanism outside of BGP itself) \cite{draft-idr-pr-04} their routing announcements based on local utility functions—CPU load, latency, throughput—but do so without coordination. Their interaction takes place through BGP advertisements and path selection behavior, producing a shared environment susceptible to instability.
 
 Each AS modulates its route announcements as a function of observed performance:
 
@@ -243,7 +243,7 @@ This coupling forms a delayed feedback loop. The system may enter oscillatory re
 
 \paragraph{Proposed Mitigation: Gradient-Paced BGP Advertiser (GPBA)}
 
-Here, we demonstrate the frameworkâ€™s usefulness by sketching a hypothetical mitigation strategy for interdomain routing: the \textbf{Gradient-Paced BGP Advertiser (GPBA)}. Rather than impose fixed rate limits, GPBA adapts the pace of route advertisement based on the environmental sensitivity observed at the peer:
+Here, we demonstrate the framework’s usefulness by sketching a hypothetical mitigation strategy for interdomain routing: the \textbf{Gradient-Paced BGP Advertiser (GPBA)}. Rather than impose fixed rate limits, GPBA adapts the pace of route advertisement based on the environmental sensitivity observed at the peer:
 
 \[
 \Delta t_{\text{propagation}} \propto \left\| \frac{dR_{\text{remote}}}{dR_{\text{local}}} \right\|
@@ -255,13 +255,13 @@ This principle discourages volatile updates by throttling agents whose announcem
 
 In February 2008, Pakistan Telecom (AS17557) attempted to implement a government-ordered block of YouTube by announcing a more-specific prefix (208.65.153.0/24) intended for internal blackholing. This announcement was mistakenly propagated to PCCW (AS3491), a major transit provider, which further distributed the route across the global Internet.
 
-Due to BGPâ€™s path selection rules, the hijacked prefixâ€”which was more specific than YouTubeâ€™s legitimate announcementâ€”was globally preferred, redirecting worldwide traffic to a null route in Pakistan. YouTube was rendered inaccessible for several hours \cite{cowie2008}.
+Due to BGP’s path selection rules, the hijacked prefix—which was more specific than YouTube’s legitimate announcement—was globally preferred, redirecting worldwide traffic to a null route in Pakistan. YouTube was rendered inaccessible for several hours \cite{cowie2008}.
 
 This incident demonstrates classic unaware adversarial dynamics:
 \begin{itemize}
     \item \textbf{Independent Objectives:} Pakistan Telecom sought national censorship; PCCW aimed to maintain routing continuity and performance.
     \item \textbf{Shared Environment:} The global BGP routing table.
-    \item \textbf{Indirect Coupling:} PCCWâ€™s propagation choices were influenced by AS17557â€™s unexpected prefix origin.
+    \item \textbf{Indirect Coupling:} PCCW’s propagation choices were influenced by AS17557’s unexpected prefix origin.
     \item \textbf{Antagonistic Effect:} Global denial of service for YouTube, triggered by local policy and lack of propagation checks.
 \end{itemize}
 
@@ -273,7 +273,7 @@ A GPBA-aware edge at PCCW could have detected that:
     \item The route produced a high volatility score in terms of downstream reachability change.
 \end{enumerate}
 
-Rather than immediately propagate the route, the GPBA heuristic would have increased the propagation delay or required additional validation. This passive reflexivityâ€”without requiring global RPKI \cite{rfc8210}  or semantic understanding of the policy intentâ€”could have bought time for human intervention or for automated anomaly detectors to act.
+Rather than immediately propagate the route, the GPBA heuristic would have increased the propagation delay or required additional validation. This passive reflexivity—without requiring global RPKI \cite{rfc8210}  or semantic understanding of the policy intent—could have bought time for human intervention or for automated anomaly detectors to act.
 
 
 \paragraph{General Insight}
@@ -357,18 +357,18 @@ By applying these principles, the framework of unaware adversaries becomes a gen
 
 \section{Discussion}
 \subsection{The Architecture of Interaction}
-The primary contribution of this paper is a framework that serves not only as a descriptive and diagnostic tool but as a generative engine for system design. We demonstrated this generative capacity twice over, deriving novel solution ideas in two disparate domains: the \textbf{Pedagogical GAN} for machine learning and the \textbf{Gradient-Paced BGP Advertiser (GPBA)} for network protocol design. Both concepts emerged directly from applying our framework's lens to a well-known problem. In each case, instead of accepting the standard adversarial dynamic as given, the framework prompted a fundamental question: "How can we redesign the agent's interaction rules to make the conflict less destructive or even productive?" The proposed solutionsâ€”one that reframes training as teaching, the other that paces communication based on systemic sensitivityâ€”are deliberate architectural choices about the nature of the agents' interaction. They represent a significant philosophical departure from conventional approaches that focus on adversarial suppression or fixed rate-limiting.
+The primary contribution of this paper is a framework that serves not only as a descriptive and diagnostic tool but as a generative engine for system design. We demonstrated this generative capacity twice over, deriving novel solution ideas in two disparate domains: the \textbf{Pedagogical GAN} for machine learning and the \textbf{Gradient-Paced BGP Advertiser (GPBA)} for network protocol design. Both concepts emerged directly from applying our framework's lens to a well-known problem. In each case, instead of accepting the standard adversarial dynamic as given, the framework prompted a fundamental question: "How can we redesign the agent's interaction rules to make the conflict less destructive or even productive?" The proposed solutions—one that reframes training as teaching, the other that paces communication based on systemic sensitivity—are deliberate architectural choices about the nature of the agents' interaction. They represent a significant philosophical departure from conventional approaches that focus on adversarial suppression or fixed rate-limiting.
 
 While the Pedagogical GAN proposal would require empirical validation to prove its worth, that is not the point of its inclusion; its conceptual origin is provided as evidence of the framework's creative value. It is the direct result of applying the \textbf{Incentive Principle}, one of the three core design strategies that emerge from our analysis. The other principles are equally direct consequences of the framework. The \textbf{Observability Principle} is the clear solution to the open-loop, asymmetric harm seen in the Email Deliverability case, while the \textbf{Hierarchy Principle} is the obvious remedy for the simple, symmetric conflict of the Heater-A/C dyad. The framework, therefore, does not just identify problems; it naturally leads to a specific class of solutions tailored to the type of conflict.
 
-The concept of unaware adversaries is especially salient today. As we continue to build ever more complex, decentralized systemsâ€”from microservice architectures and the Internet of Things to multi-agent AI ecosystems and smart citiesâ€”the potential for emergent, unintended conflict grows exponentially. Our traditional engineering and debugging practices, which focus on verifying the correctness of individual components, are insufficient for addressing failures that arise from the negative space \textit{between} those components. The problem is not that the transportation department's models are wrong or that the marketing platform's code has a bug; the problem is that the system's architecture creates incentives for globally destructive, locally optimal behavior.
+The concept of unaware adversaries is especially salient today. As we continue to build ever more complex, decentralized systems—from microservice architectures and the Internet of Things to multi-agent AI ecosystems and smart cities—the potential for emergent, unintended conflict grows exponentially. Our traditional engineering and debugging practices, which focus on verifying the correctness of individual components, are insufficient for addressing failures that arise from the negative space \textit{between} those components. The problem is not that the transportation department's models are wrong or that the marketing platform's code has a bug; the problem is that the system's architecture creates incentives for globally destructive, locally optimal behavior.
 
 Ultimately, this framework encourages a crucial shift in perspective for architects and designers. It moves the focus from the design of agents in isolation to the design of the environment they share and the incentive landscape they inhabit. By analyzing the structure of the coupling and the nature of the feedback loops, we can stop being surprised by "policy resistance" or "unintended consequences" and start architecting systems where cooperation is not an afterthought, but an emergent property of the system's fundamental design.
 
 \subsection{Relation to Classical Control Theory}
 Many of the systems described in our case studies (oscillating on/off controllers, pathological GAN dynamics, BGP route convergence) are familiar terrain in classical control theory. Such systems can often be modeled as composite dynamical systems and analyzed using tools like Lyapunov stability, observability, and controllability \cite{Khalil2002}.
 
-A compelling example of this distinction comes from classical PID control. The P, I, and D terms can be viewed as three "unaware adversaries" - independent control laws with different temporal objectives (present error, accumulated error, rate of change) simultaneously acting on a shared output. (This is an analogy rather than a literal agent decomposition; the value is in highlighting architectural coupling, not intentional autonomy. Unlike the other case studies, PID terms are intentionally designed to counterbalance each otherâ€”their interaction is coordinated by design, even if we can analyze them through an unaware-adversary lens.) While stability analysis tells us under what conditions this composite system converges, our framework asks: what if the P term's aggressive response triggers instability in the D term's derivative estimate? This is not a question of mathematical stability but of architectural choice about how to structure agent interactions.
+A compelling example of this distinction comes from classical PID control. The P, I, and D terms can be viewed as three "unaware adversaries" - independent control laws with different temporal objectives (present error, accumulated error, rate of change) simultaneously acting on a shared output. (This is an analogy rather than a literal agent decomposition; the value is in highlighting architectural coupling, not intentional autonomy. Unlike the other case studies, PID terms are intentionally designed to counterbalance each other—their interaction is coordinated by design, even if we can analyze them through an unaware-adversary lens.) While stability analysis tells us under what conditions this composite system converges, our framework asks: what if the P term's aggressive response triggers instability in the D term's derivative estimate? This is not a question of mathematical stability but of architectural choice about how to structure agent interactions.
 
 Another distinction from this formal standpoint, is that while the existence (or absence) of a global Lyapunov function may determine whether the system exhibits convergence to equilibrium, our framework highlights that stability alone is not the only goal. \textit{A system can be stable and still fail}. Many real-world adversarial pathologies - such as traffic congestion equilibria \cite{Downs1992}, or GANs collapsing to degenerate outputs \cite{Goodfellow2014, Arjovsky2017} - are cases where systems settle into \textit{undesirable equilibria, not chaotic instability}.
 
@@ -384,7 +384,7 @@ The Unaware Adversaries framework is most valuable when:
 
 The frameworks are thus complementary - classical theory for well-defined dynamical systems, unaware adversaries for socio-technical systems where intentionality matters.
 
-For example, the Pedagogical GAN proposed earlier does not reject the gradient-based framing of GAN dynamics. Instead, it reframes the design question: what if we architected the generator and discriminator not as antagonists, but as collaborators with asymmetric knowledge? This reframing doesnâ€™t negate formal stability concerns, it simply shifts attention toward the shape and utility of the learning signal, and not solely its convergence properties.
+For example, the Pedagogical GAN proposed earlier does not reject the gradient-based framing of GAN dynamics. Instead, it reframes the design question: what if we architected the generator and discriminator not as antagonists, but as collaborators with asymmetric knowledge? This reframing doesn’t negate formal stability concerns, it simply shifts attention toward the shape and utility of the learning signal, and not solely its convergence properties.
 
 While the framework's Observability Principle emphasizes making system-wide effects visible, visibility alone is insufficient when agents lack the processing capacity to interpret complex or higher-order signals.
 Consider the Email Deliverability case: the marketing platform could theoretically monitor global SMTP rejection rates, DNS blacklist statuses, and reputation scores. But recognizing that their blast is the cause of degraded reputation requires: 
@@ -394,7 +394,7 @@ Consider the Email Deliverability case: the marketing platform could theoretical
 \item{attribution across delayed feedback.}
 \end{enumerate}
 This interpretive burden may exceed the agent's analytical budget.
-Effective mitigation strategies must account not only for what information agents can access, but what information they can process and act upon given their bounded rationality. Signals must be pre-processed, aggregated, or simplified to match agent capabilitiesâ€”or alternatively, agents must be equipped with sufficient analytical resources to extract meaning from raw environmental data
+Effective mitigation strategies must account not only for what information agents can access, but what information they can process and act upon given their bounded rationality. Signals must be pre-processed, aggregated, or simplified to match agent capabilities—or alternatively, agents must be equipped with sufficient analytical resources to extract meaning from raw environmental data
 
 The tools of nonlinear systems theory - comprehensively covered in foundational texts such as Khalil's Nonlinear Systems  \cite{Khalil2002} - provide the rigorous formalisms for system stability and convergence. When such modeling is tractable, these methods should be the first line of analysis.  But when full modeling is infeasible, or when coordination failure arises from structural blindness rather than stochastic noise, our lens provides a complementary mode of reasoning that emphasizes intentionality, partial observability, and emergent conflict.
 
@@ -430,7 +430,7 @@ Ian J. Goodfellow, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David Warde-Farley,
 \newblock In \textit{Advances in Neural Information Processing Systems 27}, pages 2672--2680, 2014.
 
 \bibitem{Arjovsky2017}
-Martin Arjovsky, Soumith Chintala, and LÃ©on Bottou.
+Martin Arjovsky, Soumith Chintala, and Léon Bottou.
 \newblock Wasserstein GAN.
 \newblock \textit{arXiv preprint arXiv:1701.07875}, 2017.
 
