@@ -295,6 +295,7 @@ Here, $\mathcal{L} (D, G)$ is the standard discriminator loss. The generator is 
 
 This approach represents a conceptual departure from gradient-control-based stabilization. It is distinct from other cooperative frameworks, like Cooperative Teacher or Feature Map Distillation \cite{hu2022discriminatorcooperatedfeaturemapdistillation} and  Unrolled GANs \cite{Metz2016}, which use strategic foresight, or other non-antagonistic models that alter loss functions to escape the zero-sum game \cite{Xie2016}. Instead, it can be viewed as the principled and extreme conclusion of the line of thinking that began with the very first non-saturating GAN loss. We have not found this exact objective stated explicitly elsewhere; regardless, we only use it here as a conceptual exemplar of framework-driven ideation. 
 
+\textit{(Here we will acknowledge - to minimize the risk of causing any confusion - that being adversarial is an in-built aspect of GAN architecture, and that continuing to use the "Unaware Adversary" branding without such acknowledgement may be seen as ironic in this case.)}
 
 \section{A Taxonomy of Unaware Adversarial Systems}
 To demonstrate the analytical power of this framework, we now apply the taxonomy to our diverse case studies. As shown in Table \ref{tab:taxonomy_analysis}, this classification not only organizes the examples but also reveals critical insights into the underlying dynamics of each type of conflict and prescribes a UA Principle for mitigation strategy.
