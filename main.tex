@@ -218,7 +218,7 @@ By the Bounded Processing Capacity defined in Section 3, we should ensure each a
     \item \textbf{Neither:} optimizes over $\{\text{induced demand } \gamma, \text{long-term VKT}\}$
 \end{itemize}
 
-\subsection{Interdomain Routing Instability and the YouTube/Pakistan BGP Hijack}
+\subsection{Interdomain Routing Instability}
 
 The dynamic of independent agents pursuing local optimizations at the expense of global system health extends from urban planning to the core architecture of the internet itself. The Border Gateway Protocol (BGP) \cite{rfc4271} governs interdomain routing across the Internet, enabling thousands of autonomous systems (ASes) to exchange reachability information. While BGP is highly flexible, its decentralized and policy-driven design creates opportunities for emergent instability. This subsection presents a general case of unaware adversarial interaction in interdomain traffic engineering, followed by a concrete, high-impact example: the 2008 YouTube/Pakistan BGP hijack incident.
 
@@ -251,7 +251,7 @@ Here, we demonstrate the framework’s usefulness by sketching a hypothetical mi
 
 This principle discourages volatile updates by throttling agents whose announcements produce outsized ripples in routing state. Unlike traditional filters, GPBA uses a reflexive meta-policy: it applies only when sensitivity is high and relaxes when peers demonstrate robustness or stability. This maintains responsiveness while discouraging feedback-amplifying behavior.
 
-\subsubsection*{Case Study: The YouTube/Pakistan Hijack (2008)}
+\subsubsection*{Specific Case: The YouTube/Pakistan Hijack (2008)}
 
 In February 2008, Pakistan Telecom (AS17557) attempted to implement a government-ordered block of YouTube by announcing a more-specific prefix (208.65.153.0/24) intended for internal blackholing. This announcement was mistakenly propagated to PCCW (AS3491), a major transit provider, which further distributed the route across the global Internet.
 
@@ -265,7 +265,7 @@ This incident demonstrates classic unaware adversarial dynamics:
     \item \textbf{Antagonistic Effect:} Global denial of service for YouTube, triggered by local policy and lack of propagation checks.
 \end{itemize}
 
-\paragraph{Could GPBA Have Mitigated This?}
+\subsubsection*{Could GPBA Have Mitigated This?}
 
 A GPBA-aware edge at PCCW could have detected that:
 \begin{enumerate}
@@ -357,9 +357,9 @@ By applying these principles, the framework of unaware adversaries becomes a gen
 
 \section{Discussion}
 \subsection{The Architecture of Interaction}
-The primary contribution of this paper is a framework that serves not only as a descriptive and diagnostic tool but as a generative engine for system design. We demonstrated this generative capacity twice over, deriving novel solution ideas in two disparate domains: the \textbf{Pedagogical GAN} for machine learning and the \textbf{Gradient-Paced BGP Advertiser (GPBA)} for network protocol design. Both concepts emerged directly from applying our framework's lens to a well-known problem. In each case, instead of accepting the standard adversarial dynamic as given, the framework prompted a fundamental question: "How can we redesign the agent's interaction rules to make the conflict less destructive or even productive?" The proposed solutions—one that reframes training as teaching, the other that paces communication based on systemic sensitivity—are deliberate architectural choices about the nature of the agents' interaction. They represent a significant philosophical departure from conventional approaches that focus on adversarial suppression or fixed rate-limiting.
+The primary contribution of this paper is a framework that serves not only as a descriptive and diagnostic tool but as a generative engine for system design. We demonstrated this generative capacity twice over, deriving plausible and interesting  solution ideas in two disparate domains: the \textbf{Pedagogical GAN} for machine learning and the \textbf{Gradient-Paced BGP Advertiser (GPBA)} for network protocol design. Both concepts emerged directly from applying our framework's lens to a well-known problem. In each case, instead of accepting the standard adversarial dynamic as given, the framework prompted a fundamental question: "How can we redesign the agent's interaction rules to make the conflict less destructive or even productive?" The proposed solutions—one that reframes training as teaching, the other that paces communication based on systemic sensitivity—are deliberate architectural choices about the nature of the agents' interaction. They represent a significant philosophical departure from conventional approaches that focus on adversarial suppression or fixed rate-limiting.
 
-While the Pedagogical GAN proposal would require empirical validation to prove its worth, that is not the point of its inclusion; its conceptual origin is provided as evidence of the framework's creative value. It is the direct result of applying the \textbf{Incentive Principle}, one of the three core design strategies that emerge from our analysis. The other principles are equally direct consequences of the framework. The \textbf{Observability Principle} is the clear solution to the open-loop, asymmetric harm seen in the Email Deliverability case, while the \textbf{Hierarchy Principle} is the obvious remedy for the simple, symmetric conflict of the Heater-A/C dyad. The framework, therefore, does not just identify problems; it naturally leads to a specific class of solutions tailored to the type of conflict.
+While the two aforementioned proposed systems solutions would require empirical validation to prove if they have anu worth, that is not the point of their inclusion; the conceptual origins provide evidence of the framework's creative value. It is the direct result of applying one or more of the three core design strategy Principles that emerge from our analysis. Pedagogical GAN is a product of the \textbf{Incentive Principle}. The \textbf{Observability Principle} is the clear solution to the open-loop, asymmetric harm seen in the Email Deliverability case, while the \textbf{Hierarchy Principle} is the obvious remedy for the simple, symmetric conflict of the Heater-A/C dyad. The framework, therefore, does not just identify problems; it naturally leads to a specific class of solutions tailored to the type of conflict.
 
 The concept of unaware adversaries is especially salient today. As we continue to build ever more complex, decentralized systems—from microservice architectures and the Internet of Things to multi-agent AI ecosystems and smart cities—the potential for emergent, unintended conflict grows exponentially. Our traditional engineering and debugging practices, which focus on verifying the correctness of individual components, are insufficient for addressing failures that arise from the negative space \textit{between} those components. The problem is not that the transportation department's models are wrong or that the marketing platform's code has a bug; the problem is that the system's architecture creates incentives for globally destructive, locally optimal behavior.
 
