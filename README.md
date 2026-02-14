@@ -1,4 +1,4 @@
-# Unaware Adversaries Framework
+# Unaware Adversaries
 
 **A Framework for Characterizing Emergent Conflict Between Non-Coordinating Agents**
 
