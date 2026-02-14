@@ -2,11 +2,7 @@
 
 **A Framework for Characterizing Emergent Conflict Between Non-Coordinating Agents**
 
-By Scott VanRavenswaay | February 2026
-
-## About
-
-This repository contains the paper "Unaware Adversaries: A Framework for Characterizing Emergent Conflict Between Non-Coordinating Agents" and all associated source files.
+Scott VanRavenswaay | February 2026
 
 ### Abstract
 
